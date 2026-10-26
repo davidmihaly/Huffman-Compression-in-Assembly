@@ -47,8 +47,8 @@ All multi-byte numbers are little-endian.
 | `0x000` | 4 bytes | Magic number | `HUFF`, identifies files created by this program |
 | `0x004` | 1028 bytes | Frequency table | 257 32-bit counts: byte values 0 to 255, then the EOF symbol (always 1) |
 | `0x408` | 4 bytes | Original size | Size of the uncompressed file in bytes |
-| `0x40C` | 10 bytes | File type | Original file extension, zero-padded |
-| `0x416` | variable | Encoded bitstream | Huffman codes packed most significant bit first, ending with the EOF code and zero padding |
+| `0x40C` | 10 bytes | File type | Original file extension |
+| `0x416` | variable | Encoded bitstream | Huffman codes  |
 
 The header is a fixed 1,046 bytes.
 
@@ -58,8 +58,6 @@ The header is a fixed 1,046 bytes.
 |---|---|
 | Decoding a file that does not start with the `HUFF` magic number | `The given file is not a .huff file` |
 | Encoding a file that starts with the `HUFF` magic number | `The given file is a .huff file and it cannot be encoded` |
-
-Error handling is otherwise minimal; see Known limitations.
 
 ## Testing
 
